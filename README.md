@@ -1,4 +1,4 @@
-Alunos:
-  -Gabriel Washington
+Alunos:<br>
+  -Gabriel Washington <br>
   -Luis Arthur
   
