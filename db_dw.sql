@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema db_dw
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema db_dw
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `db_dwFAULT CHARACTER SET utf8 ;
+USE `db_dw
 
 -- -----------------------------------------------------
--- Table `mydb`.`genero`
+-- Table `db_dwenero`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`genero` (
+CREATE TABLE IF NOT EXISTS `db_dwenero` (
   `id_genero` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome_genero` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_genero`))
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`diretor`
+-- Table `db_dwiretor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`diretor` (
+CREATE TABLE IF NOT EXISTS `db_dwiretor` (
   `id_diretor` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome_diretor` VARCHAR(100) NOT NULL,
   `pais_diretor` VARCHAR(100) NOT NULL,
@@ -39,9 +39,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`filme`
+-- Table `db_dwilme`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`filme` (
+CREATE TABLE IF NOT EXISTS `db_dwilme` (
   `id_filme` INT NOT NULL AUTO_INCREMENT,
   `titulo_filme` VARCHAR(100) NOT NULL,
   `ano_filme` INT NOT NULL,
@@ -52,21 +52,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`filme` (
   INDEX `fk_filmes_diretor1_idx` (`diretor_id_diretor` ASC) VISIBLE,
   CONSTRAINT `fk_filmes_genero`
     FOREIGN KEY (`genero_id_genero`)
-    REFERENCES `mydb`.`genero` (`id_genero`)
+    REFERENCES `db_dwenero` (`id_genero`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_filmes_diretor1`
     FOREIGN KEY (`diretor_id_diretor`)
-    REFERENCES `mydb`.`diretor` (`id_diretor`)
+    REFERENCES `db_dwiretor` (`id_diretor`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`avaliacao`
+-- Table `db_dwvaliacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
+CREATE TABLE IF NOT EXISTS `db_dwvaliacao` (
   `id_avaliacao` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `filme_id_filme` INT NOT NULL,
   `nota_avaliacao` INT NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
   INDEX `fk_avaliacao_filmes1_idx` (`filme_id_filme` ASC) VISIBLE,
   CONSTRAINT `fk_avaliacao_filmes1`
     FOREIGN KEY (`filme_id_filme`)
-    REFERENCES `mydb`.`filme` (`id_filme`)
+    REFERENCES `db_dwilme` (`id_filme`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
